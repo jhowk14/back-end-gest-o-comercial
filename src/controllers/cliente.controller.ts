@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import ClienteRepository, { CreateClienteType, updateClienteSchema } from '../repositorys/cliente.repo';
+import ClienteRepository from '../models/cliente.model';
 import { ApiError } from '../helpers/erroHelper';
 
 const clienteRepo = new ClienteRepository();

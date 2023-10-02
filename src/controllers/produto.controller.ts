@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import ProdutoRepository, { createProdutoType } from '../repositorys/produto.repo';
+import ProdutoRepository from '../models/produto.model';
 import { ApiError } from '../helpers/erroHelper';
 
 const produtoRepo = new ProdutoRepository();
@@ -73,7 +73,7 @@ export const deleteProduto = async (req: Request, res: Response) => {
         if (error instanceof ApiError) {
             res.status(error.statusCode).json({ message: error.message });
         } else {
-            res.status(500).json({ message: 'Internal server error' });
+            res.status(500).json({ message: error });
         }
     }
 }

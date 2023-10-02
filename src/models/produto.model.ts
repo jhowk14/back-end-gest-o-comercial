@@ -60,17 +60,19 @@ async updateProdutoById(ProdutoId: number, data: Partial<createProdutoType>){
     }
 }
 
-async deleteProdutoById (ProdutoId: number){
+async deleteProdutoById(produtoId: number) {
     try {
+
+        // Em seguida, exclua o produto
         const Produto = await prisma.produto.delete({
             where: {
-                id: ProdutoId
+                id: produtoId
             }
         });
 
         return Produto;
     } catch (e) {
-        throw e; 
+        throw e;
     }
 }
 }

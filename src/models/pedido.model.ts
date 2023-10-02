@@ -1,6 +1,6 @@
 import prisma from "../services/prisma";
 import { z } from 'zod';
-import ItensPedidoRepository from "./itensPedido.repo";
+import ItensPedidoRepository from "./itensPedido.model";
 
 const itens = new ItensPedidoRepository();
 
@@ -70,7 +70,11 @@ export default class PedidoRepository {
             return await prisma.pedido.findMany({
                 include:{
                     cliente: true,
-                    itensPedido: true
+                    itensPedido: {
+                        include: {
+                            produto:true
+                        }
+                    }
                 }
             });
         } catch (e) {

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import PedidoRepository, { ItensPedido, createPedidoSchema } from '../repositorys/pedido.repo';
+import PedidoRepository, { createPedidoSchema } from '../models/pedido.model';
 import { ApiError } from '../helpers/erroHelper';
 
 const pedidoRepo = new PedidoRepository();
@@ -16,6 +16,7 @@ export const createPedido = async (req: Request, res: Response) => {
             res.status(error.statusCode).json({ message: error.message });
         } else {
             res.status(500).json({ message: error });
+            console.log(error);
         }
     }
 }
